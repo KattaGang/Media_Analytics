@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History-Page</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        line-height: 1.7;
+
+        position: relative;
+        height: 320vh;
+        background-color: #A9C9FF;
+        background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
+
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        /* rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), */
+
+
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    a {
+        font-size: 1.6rem;
+        text-decoration: none;
+    }
+
+    p,
+    li {
+        font-size: 1.6rem;
+        margin-bottom: 0.5em;
+        letter-spacing: 0.15em;
+    }
+
+    h1,
+    h3 {
+        margin-bottom: 0.5em;
+        letter-spacing: 0.15em;
+        font-weight: 700;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+        height: 48px;
+    }
+
+    .lgheading {
+        font-size: 3.5rem;
+    }
+
+    .mdheading {
+        font-size: 2.2rem;
+    }
+
+    .textred {
+        color: #e63946;
+    }
+
+    .textlight {
+        color: #f4f4f4;
+    }
+
+    .textdark {
+        color: #333;
+    }
+
+    .textgray {
+        color: #555;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.5em 1.5em;
+        font-weight: 500;
+        margin: 0.5em 0;
+        border-radius: 100px;
+    }
+
+    .btnpri {
+        background-color: white;
+    }
+
+    .btnsec {
+        border: 1px solid #e63946;
+    }
+
+    .btn:hover {
+        background-color: #aaa;
+    }
+
+    .bgdark {
+        background-color: #263238;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar .logo {
+        float: left;
+        font-size: 3.5rem;
+    }
+
+    .navbar .navitems {
+        float: right;
+        margin-top: 1rem;
+        color: #ddd;
+    }
+
+    .navbar .navitem {
+        display: inline-block;
+        padding: 1rem;
+    }
+
+    .clearfix {
+        clear: both;
+    }
+
+    .navbar a:hover {
+        border-bottom: 1px solid white;
+    }
+
+    .navbar a {
+        padding-bottom: 0.3rem;
+    }
+
+    .navbar a {
+        color: white;
+    }
+
+
+
+    /* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 27vh;
+    }
+
+    .title {
+        padding: 40px;
+        color: #f4f4f4;
+        font-size: x-large;
+    }
+
+    .container-1 {
+        font-size: large;
+    }
+
+    .container-2{
+        position: relative;
+top: 43vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+    }
+
+  .box1{
+
+   background: rgba(44,46,46,0.3);
+display: flex;
+justify-content: space-around;
+align-items: center;
+width: 172vh;
+height: 10vh;
+border: 2px solid black;
+margin: 3vh;
+box-shadow: 14px 11px 8px gray;
+transition: 0.5s;
+
+transition-property: height;
+          transition-duration: 2s;
+          transition-timing-function: ease-in;
+  }
+
+  .box1:hover{
+    transform: scale(1.1);
+  }
+  
+  .view {
+    margin: 18px;
+    background-color: #f5c242;
+    color: #ddd;
+    height: 13vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 20vh;
+    height: 4vh;
+    border: 2px solid white;
+    border-radius: 20px;
+
+    font-size: medium;
+    width: 12vh;
+    border: none;
+    transition: 0.5s;
+
+}
+
+.delete {
+    margin: 18px;
+    background-color: #f5c242;
+    color: #ddd;
+    height: 13vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 20vh;
+    height: 4vh;
+    border: 2px solid white;
+    border-radius: 20px;
+
+    font-size: medium;
+    width: 12vh;
+    border: none;
+    transition: 0.5s;
+
+}
+
+button {
+    background: transparent;
+    border: none;
+    font-size: larger;
+    color: white;
+}
+
+.delete:hover {
+    background-color: #e63946;
+}
+
+.view:hover {
+    background-color: rgb(19,176,51);
+}
+
+.comapany{
+    color: #f4f4f4;
+}
+
+
+
+
+
+
+    .footer {
+        background-color: #263238;
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        top: 70vh;
+        z-index: -1;
+    }
+
+    .a {
+        padding: 2rem;
+    }
+
+    .socialmedia i {
+        margin: 2rem;
+    }
+</style>
+
+<body>
+
+    <body>
+
+        <body>
+            <nav class="navbar  bgdark ">
+                <div class="container">
+                    <h1 class="logo lgheading textlight">Troll Manangment</h1>
+                    <ul class="navitems textlight">
+                        <li class="navitem "><a href="">HOME</a></li>
+                        <li class="navitem "><a href="">DASHBOARD</a></li>
+                        <li class="navitem "><a href="">LOG-OUT</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </nav>
+
+            <div class="conatainer-1">
+
+                <div class="box">
+                    <div class="title">
+                        <header>
+                            <h1>History</h1>
+                            <hr>
+                        </header>
+                    </div>
+                </div>
+
+                <div class="container-2">
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+
+                    <div class="box1">
+                        <div class="icon">
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="comapany">
+                            <h1>Spicejet</h1>
+                        </div>
+                        <div class="view">
+                            <button><span>view</span></button>
+                        </div>
+                        <div class="delete">
+                            <button><span>Delete</span></button>
+                        </div>
+                    </div>
+ 
+                    </div>>
+
+                    <footer class="footer">
+                        <div class="socialmedia">
+                            <a href="https://www.facebook.com/CRIFINDIA/"><i
+                                    class="fa-brands fa-facebook fa-3x"></i></a>
+                            <a href="https://www.instagram.com/crifindia/?hl=en"><i
+                                    class="fa-brands fa-instagram fa-3x"></i></a>
+                            <a href="https://twitter.com/crif_india?lang=en"><i
+                                    class="fa-brands fa-twitter fa-3x"></i></a>
+
+                            <a href="https://www.linkedin.com/company/crif-india/?originalSubdomain=in"
+                                target="_blank"><i class="fa-brands fa-linkedin fa-3x"></i></a>
+
+                        </div>
+                        <p>CRIF India &copy; 2023 all rights reserved</p>
+
+                        <script src="https://kit.fontawesome.com/fb6c14db56.js" crossorigin="anonymous"></script>
+
+                    </footer>
+        </body>
+
+</html>
