@@ -1,0 +1,14 @@
+{% extends 'main.html' %} {% block content %}
+<a href="{% url 'instance-update' instance.id %}">Update</a>
+<a href="{% url 'instance-delete' instance.id %}">Delete</a>
+<a href="{% url 'instance-download' instance.id %}">Download</a>
+<p>{{instance.company_name}}</p>
+<p>{{instance.description}}</p>
+<p>{{instance.score}}</p>
+
+{% for article in articles %}
+<p>
+  {{article.title}}
+  <a href="{% url 'article' article.id %}">View</a>
+</p>
+{% endfor %} {% endblock content %}

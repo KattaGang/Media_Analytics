@@ -1,0 +1,8 @@
+{% extends 'main.html' %} {% block content %}
+<a href="{{article.link}}">Visit</a>
+<a href="{% url 'article-update' article.id %}">Update</a>
+<a href="{% url 'article-delete' article.id %}">Delete</a>
+<p>{{article.company_name}}</p>
+<p>{{article.score}}</p>
+<p>{{article.description}}</p>
+{% endblock content %}
