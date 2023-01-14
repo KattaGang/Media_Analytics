@@ -42,7 +42,7 @@ class Instance(models.Model):
     description = models.TextField(null=True, blank=True)
     from_date = models.DateTimeField(
         default=timezone.now() - timezone.timedelta(days=100))
-    to_date = models.DateTimeField(default=timezone.now())
+    to_date = models.DateTimeField(default=timezone.now() - timezone.timedelta(days=1))
     threshold = models.IntegerField(default=DEFAULT_THRESHOLD)
     number_risk_articles = models.IntegerField(default=0)
     phrases = models.TextField(default="")
