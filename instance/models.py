@@ -22,7 +22,7 @@ class Article(models.Model):
     score = models.IntegerField(default=0)
 
     def process(self):
-        self.score = risk_analysis.get_score_article(
+        self.score = risk_analysis.get_score_text(
             self.description, self.company_name)
         self.number_risk_statements = risk_analysis.get_risky_lines_article(
             self.description, self.threshold, self.company_name)
@@ -55,10 +55,11 @@ class Instance(models.Model):
         ordering = ['-updated', '-created']
 
     def process(self):
-        for article in self.articles:
+        for article in self.articles.all():
             article.threshold = self.threshold
             article.company_name = self.company_name
             article.process()
+            article.save()
 
     def download(self):
         arts = data_api.getData(self.company_name)

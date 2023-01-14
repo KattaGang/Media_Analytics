@@ -2,7 +2,7 @@ import spacy
 from newsapi import NewsApiClient
 API_KEY = 'd83a0fb9e3104414a3693c6c4fdab735'
 COMPANY_NAME = 'exxon-mobile'
-
+MULTIPLIER = 100
 
 nlp = spacy.load('en_core_web_md')
 
@@ -22,44 +22,58 @@ def setup():
     print(RISK_TOKENS)
 
 
-def get_score_text(text, company_name):
-    doc = nlp(text)
-    score = 0
-    for risk_token in RISK_TOKENS:
-        score = max(score, risk_token.similarity(doc))
-    return score
-
-
-def get_score_token(token, company_name):
+def get_risk_score_token(token, company_name):
     score = 0
     for risk_token in RISK_TOKENS:
         score = max(score, token.similarity(risk_token))
+    return int(MULTIPLIER * score)
+
+
+def get_company_score_token(token, company_name):
+    doc = nlp(company_name)
+    company_token = doc[0]
+    score = token.similarity(company_token)
+    return int(MULTIPLIER * score)
+
+
+def get_company_score_sentence(sentence, company_name):
+    score = 0
+    for token in sentence:
+        score += get_company_score_token(token, company_name)
+    score /= len(sentence)
+    return score
+
+
+def get_risk_score_sentence(sentence, company_name):
+    score = 0
+    for token in sentence:
+        score += get_risk_score_token(token, company_name)
+    score /= len(sentence)
     return score
 
 
 def get_score_sentence(sentence, company_name):
-    score = 0
-    for token in sentence:
-        score += get_score_token(token, company_name)
-    score /= len(sentence)
-    return int(100 * score)
+    company_score = get_company_score_sentence(sentence, company_name)
+    risk_score = get_risk_score_sentence(sentence, company_name)
+    return (company_score * risk_score)
 
 
-def get_score_article(article, company_name):
-    doc = nlp(article)
+def get_score_text(text, company_name):
+    doc = nlp(text)
     score = 0
     for sentence in doc.sents:
         score += get_score_sentence(sentence, company_name)
     score /= len(list(doc.sents))
     return score
 
-def get_risky_lines_article(article, threshold, company_name):
-    numlines = 0
-    for sent in nlp(article).sents:
-        if get_score_sentence(sent, company_name) >= threshold:
-            numlines += 1
-    return numlines
 
+def get_risky_lines_article(text, threshold, company_name):
+    doc = nlp(text)
+    no_risky_lines = 0
+    for sentence in doc.sents:
+        if get_score_sentence(sentence, company_name) >= threshold:
+            no_risky_lines += 1
+    return no_risky_lines
 
 
 setup()
